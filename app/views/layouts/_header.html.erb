@@ -1,34 +1,38 @@
 <header class="d-flex justify-content-center">
   <div class="container">
-    <nav class="navbar navbar-expand-lg navbar-light">
-      <a class="navbar-brand text-white" href="#">Products</a>
+    <nav class="navbar navbar-expand-lg navbar-light justify-content-center">
+      <div class="container justify-content-center">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="collapse navbar-collapse justify-content-between text-white" id="navbarSupportedContent">
-        <ul class="navbar-nav">
+      <div class="collapse navbar-collapse flex-grow-0 justify-content-between text-white" id="navbarSupportedContent">
+        <ul class="navbar-nav d-flex">
+          <li class="nav-item active">
+            <%= link_to "Products", products_path, class: "nav-link text-white", style: "font-size: 1.20rem;" %>
+          </li>
           <li class="nav-item dropdown">
-            <div class="dropdown">
-              <a class="nav-link dropdown-toggle text-white" href="#" id="categoriesDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</a>
-              <div class="dropdown-menu" aria-labelledby="categoriesDropdown">
-                <a class="dropdown-item" href="#">Category 1</a>
-                <a class="dropdown-item" href="#">Category 2</a>
-                <a class="dropdown-item" href="#">Category 3</a>
+            <div class="dropdown ">
+              <a class="nav-link text-white" style="font-size: 1.20rem;" href="#" id="categoriesDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</a>
+              <div class="dropdown-menu " style="background-color: var(--bs-warning)" aria-labelledby="categoriesDropdown">
+                <% @categories.each do |category| %>
+                  <%= link_to category.name, category_path(category), class: "dropdown-item" %>
+                <% end %>
               </div>
             </div>
           </li>
-          <li class="nav-item active">
-            <a class="nav-link text-white" href="#">Latest</a>
+          <li class="nav-item">
+            <%= link_to "Latest", products_path, class: "nav-link text-white", style: "font-size: 1.20rem;" %>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white" href="#">Order</a>
+            <%= link_to "Order", products_path, class: "nav-link text-white", style: "font-size: 1.20rem;" %>
           </li>
           <li class="nav-item ">
-            <a class="nav-link text-white" href="#">About us</a>
+            <%= link_to "About us", products_path, class: "nav-link text-white", style: "font-size: 1.20rem;" %>
           </li>
         </ul>
       </div>
+    </div>
     </nav>
 
     <div class="px-3 py-2">
@@ -40,9 +44,7 @@
         <div class="text-end">
           <% if user_signed_in?  %>
           <div class="container">
-          <p class="text-white"style="display:inline-block">
-            <%= current_user.first_name %> <%= current_user.last_name %>
-            </p>
+            <p class="text-white" style="display:inline-block"><%= current_user.first_name %> <%= current_user.last_name %></p>
             <%= button_to "Sign out", destroy_user_session_path, class: "btn btn-outline-secondary me-2", method: :delete, data: { turbo_confirm: "Are you sure?"}, form: {style: 'display:inline-block;'}  %>
             </div>
           <% else  %>
