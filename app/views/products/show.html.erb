@@ -1,0 +1,21 @@
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-6 col-xl-4">
+        <div class="card text-white" style="background-color: rgba(20, 20, 20, 0.5);">
+          <%= image_tag @product.name, class: "card-img-top" %>
+          <h3 class="card-title d-flex justify-content-center"><%= @product.name %></h3>
+          <div class="card-body">
+            <div class="text-center">
+              <h5 class="card-title"><%= @product.description %></h5>
+            </div>
+            <div class="d-flex justify-content-center total font-weight-bold mt-4">
+              <h5>Price <%= @product.price %>₴</h5>
+            </div>
+            <div class="d-flex justify-content-center">
+              <%= button_to "Add to cart", destroy_user_session_path, class: "btn btn-success me-2"%>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

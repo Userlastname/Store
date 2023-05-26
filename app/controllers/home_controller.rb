@@ -1,6 +1,8 @@
 class HomeController < ApplicationController
-  def index;end
-  def show
-    @category = resource
+  def index
+  @query = Product.ransack(params[:q])
+  @products = @query.result(distinct: :true)
   end
+
+  def about_us;end
 end
