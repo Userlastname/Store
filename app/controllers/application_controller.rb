@@ -3,11 +3,15 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_categories
+  before_action :set_query
 
+  def set_query
+    @query = Product.ransack([:q])
+  end
   private
 
   def set_categories
-    @categories = Category.ordered
+    @categories = Category.all
   end
 
   protected
