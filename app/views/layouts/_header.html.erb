@@ -10,6 +10,7 @@
           <li class="nav-item active">
             <%= link_to "Products", products_path, class: "nav-link text-white", style: "font-size: 1.20rem;" %>
           </li>
+
           <li class="nav-item dropdown">
             <div class="dropdown ">
               <a class="nav-link text-white" style="font-size: 1.20rem;" href="#" id="categoriesDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</a>
@@ -20,11 +21,17 @@
               </div>
             </div>
           </li>
+
+          <li class="nav-item">
+            <%= link_to "Cart", cart_path(:id), form: {turbolink: false}, class: "nav-link text-white", style: "font-size: 1.20rem;" %>
+          </li>
+
           <li class="nav-item">
             <%= link_to "Order", products_path, class: "nav-link text-white", style: "font-size: 1.20rem;" %>
           </li>
+
           <li class="nav-item ">
-            <%= link_to "About us", products_path, class: "nav-link text-white", style: "font-size: 1.20rem;" %>
+            <%= link_to "About us", about_us_path, class: "nav-link text-white", style: "font-size: 1.20rem;" %>
           </li>
         </ul>
       </div>
@@ -32,13 +39,15 @@
     </nav>
 
     <div class="px-3 py-2">
-      <div class="container d-flex flex-wrap justify-content-center">
+      <div class="container d-flex flex-wrap justify-content-between">
+
         <%= search_form_for(@query, url: root_path, method: :get, class:"col-12 col-lg-auto mb-2 mb-lg-0 me-lg-auto") do |f| %>
           <div class="input-group">
             <%= f.search_field :name_cont_any, class: "form-control"%>
             <%= f.submit "Search", class: "btn btn-light"%>
           </div>
         <% end %>
+
         <div class="text-end">
           <% if user_signed_in?  %>
           <div class="container">
@@ -50,6 +59,7 @@
             <%= link_to "Sign up", new_user_registration_path, class: "btn btn-outline-warning", form: {style: 'display:inline-block;'} %>
           <% end %>
         </div>
+
       </div>
       <hr class="text-white">
     </div>

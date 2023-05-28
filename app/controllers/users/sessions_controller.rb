@@ -14,9 +14,16 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   # DELETE /resource/sign_out
-  # def destroy
-  #   super
-  # end
+  def destroy
+    if user_signed_in?
+      if session[:cart_id].present?
+        @current_cart = Cart.find_by(id: session[:cart_id])
+        @current_cart.update(user: current_user) if @current_cart.present?
+      end
+    end
+
+    super
+  end
 
   # protected
 
@@ -24,4 +31,5 @@ class Users::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+
 end
