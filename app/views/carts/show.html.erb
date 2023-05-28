@@ -1,0 +1,55 @@
+<% if !@cart.products.present? %>
+  <h1 class="text-center text-white">
+    <span class="rounded" style="background-color: rgba(50, 50, 50, 0.5);">
+      Cart is empty.
+    </span>
+  </h1>
+<% else %>
+  <table class="table align-middle mb-0" style="background-color: rgba(10, 10, 10, 0.5);">
+    <p class="text-white text-center">
+      <span class="rounded" style="background-color: rgba(50, 50, 50, 0.5);">
+        Quantity - <%= @current_cart.sub_quantity %>. Amount - <%= number_to_currency(@current_cart.sub_total) %>
+      </span>
+    </p>
+    <div class="text-center">
+    <%= link_to 'Order', root_path, class: "btn btn-primary" %>
+    </div>
+    <thead class="text-white">
+      <tr>
+        <th>Name</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Total price</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @cart.cart_products.each do |item| %>
+        <tr>
+          <td>
+            <div class="d-flex align-items-center text-white">
+              <%= image_tag item.product.name, style:"width: 45px; height: 45px" %>
+              <div class="ms-3 text-white">
+                <p class="fw-bold mb-1"><%= item.product.name %></p>
+                <p class="mb-0"><%= item.product.category.name %></p>
+              </div>
+            </div>
+          </td>
+          <td>
+            <p class="fw-normal mb-1 text-white"><%= item.quantity %></p>
+          </td>
+          <td>
+            <p class="text-white"><%= number_to_currency(item.product.price) %></p>
+          </td>
+          <td><p class="text-white"><%= number_to_currency(item.total_price) %></td></p>
+          <td>
+            <div class="btn-group">
+              <%= button_to "+", add_qunt_path(item), class: "btn btn-outline-success" %>
+              <%= button_to "-", reduce_qunt_path(item), class: "btn btn-outline-danger" %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
