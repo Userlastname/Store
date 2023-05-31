@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get "about_us", to: "home#about_us"
   resources :products, :categories, only: [:index, :show]
   resources :carts
+  resources :orders
   post 'carts/:id/reduce', to: "carts#reduce_quantity", as: "reduce_qunt"
   post 'carts/:id/add', to: "carts#add_quantity", as: "add_qunt"
   delete "carts/:id", to: "carts#destroy", as: "destroy_item"

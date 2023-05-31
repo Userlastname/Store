@@ -3,21 +3,21 @@
     <div class="wrap">
       <div class="login-wrap p-4 p-md-1">
         <br>
-        <h2 class="text-center text-white">Log in</h2>
+        <h2 class="tc tw">Log in</h2>
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
           <div class="form-floating">
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", id: "floatingInput" %>
-            <%= f.label :email, "Email address", class: "form-control-placeholder", for: "floatingInput" %>
+            <%= f.email_field :email, class: "form-control" %>
+            <%= f.label :email, "Email address", class: "form-control-placeholder" %>
           </div>
           <div class="form-floating">
-            <%= f.password_field :password, autocomplete: "current-password", class: "form-control", id: "floatingInput" %>
-            <%= f.label :password, "Password", class: "form-control-placeholder", for: "floatingPassword" %><br />
+            <%= f.password_field :password, class: "form-control" %>
+            <%= f.label :password, "Password", class: "form-control-placeholder" %><br />
           </div>
 
           <% if devise_mapping.rememberable? %>
             <div class="form-group">
               <%= f.check_box :remember_me %>
-              <%= f.label :remember_me, class: "form-control-placeholder text-white" %>
+              <%= f.label :remember_me, class: "form-control-placeholder tw" %>
             </div>
           <% end %>
           <div class="form-group">

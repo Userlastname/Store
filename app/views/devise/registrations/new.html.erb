@@ -1,37 +1,37 @@
-<div class="row justify-content-center ">
+<div class="row justify-content-center">
   <div class="col-md-7 col-lg-5">
     <div class="wrap">
       <div class="login-wrap p-4 p-md-1">
-        <h2 class="text-center text-white">Sign up</h2>
+        <h2 class="tc tw">Sign up</h2>
 
         <%= form_for(resource, as: resource_name,class: "signin-form", url: registration_path(resource_name)) do |f| %>
           <%= render "devise/shared/error_messages", resource: resource %>
           <div class="form-floating">
-            <%= f.text_field :first_name, autofocus: true, autocomplete: "first name", class: "form-control" %>
+            <%= f.text_field :first_name, class: "form-control" %>
             <%= f.label :first_name, "First name", class: "form-control-placeholder" %><br>
           </div>
           <div class="form-floating">
-            <%= f.text_field :last_name, autofocus: true, autocomplete: "last name", class: "form-control" %>
+            <%= f.text_field :last_name, class: "form-control" %>
             <%= f.label :last_name, "Last name", class: "form-control-placeholder" %><br>
           </div>
 
           <div class="form-floating">
-            <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone", class: "form-control" %>
+            <%= f.text_field :phone_number, class: "form-control" %>
             <%= f.label :phone_number, "Phone number", class: "form-control-placeholder" %><br>
           </div>
 
           <div class="form-floating">
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+            <%= f.email_field :email, class: "form-control" %>
             <%= f.label :email, "Email", class: "form-control-placeholder" %><br/>
           </div>
 
           <div class="form-floating">
-            <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+            <%= f.password_field :password, class: "form-control" %>
             <%= f.label :password, "Password (6 characters minimum)", class: "form-control-placeholder" %> <br>
           </div>
 
           <div class="form-floating">
-            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+            <%= f.password_field :password_confirmation, class: "form-control" %>
             <%= f.label :password_confirmation, "Password confirmation", class: "form-control-placeholder" %>
           </div>
           <hr>

@@ -1,0 +1,14 @@
+<h1>Order Details</h1>
+<p>Ordered At: <%= @order.ordered_at %></p>
+<p>Status: <%= @order.status %></p>
+
+<h2>Order Detail</h2>
+<p>First Name: <%= @order.order_detail.first_name %></p>
+<p>Last Name: <%= @order.order_detail.last_name %></p>
+<p>Email: <%= @order.order_detail.email %></p>
+
+<h2>Address</h2>
+<p>Country: <%= @order.order_detail.address.country %></p>
+<p>City: <%= @order.order_detail.address.city %></p>
+<p>Street: <%= @order.order_detail.address.street %></p>
+<p>Comment: <%= @order.order_detail.address.comment %></p>
