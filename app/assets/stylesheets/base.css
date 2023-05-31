@@ -6,3 +6,11 @@ body {
   background-position: center;
   font-family: 'Open Sans', sans-serif;
 }
+
+.tc {
+  text-align: center;
+}
+
+.tw {
+  color: white;
+}
