@@ -39,9 +39,10 @@
             <p class="fw-normal mb-1 tw"><%= item.quantity %></p>
           </td>
           <td>
-            <p class="tw"><%= number_to_currency(item.product.price) %></p>
+            <p class="tw"><%= number_to_currency(item.product.price) %> ₴</p>
           </td>
-          <td><p class="tw"><%= number_to_currency(item.total_price) %></td></p>
+          <td>
+            <p class="tw"><%= number_to_currency(item.total_price) %> ₴</td></p>
           <td>
             <div class="btn-group">
               <%= button_to "+", add_qunt_path(item), class: "btn btn-outline-success" %>

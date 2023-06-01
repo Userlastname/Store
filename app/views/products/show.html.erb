@@ -1,7 +1,6 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-8 col-lg-6 col-xl-4">
-
         <div class="card tw bg-text">
           <%= image_tag @product.name, class: "card-img-top" %>
           <h3 class="card-title d-flex justify-content-center"><%= @product.name %></h3>
@@ -19,7 +18,6 @@
               <%= button_to "Add to cart", carts_path(:product_id => @product.id), class: "btn btn-success me-2" %>
             </div>
           </div>
-
         </div>
       </div>
     </div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_30_132144) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_01_111422) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,6 +22,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_30_132144) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "order_detail_id"
     t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
@@ -64,12 +65,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_30_132144) do
   create_table "order_details", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
-    t.string "email"
     t.bigint "order_id", null: false
-    t.bigint "address_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["address_id"], name: "index_order_details_on_address_id"
+    t.string "phone_number"
     t.index ["order_id"], name: "index_order_details_on_order_id"
   end
 
@@ -120,7 +119,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_30_132144) do
 
   add_foreign_key "cart_products", "carts"
   add_foreign_key "cart_products", "products"
-  add_foreign_key "order_details", "addresses"
   add_foreign_key "order_details", "orders"
   add_foreign_key "products", "categories"
 end

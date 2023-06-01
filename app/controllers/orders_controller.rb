@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!
   def new
     @order = Order.new
     @order.build_order_detail
@@ -6,9 +7,18 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new(order_params)
+    @order = current_user.orders.build(order_params)
+    cart_products = current_user.cart.cart_products
+
+    cart_products.each do |cart_product|
+      @order.products << cart_product.product
+    end
+
     if @order.save
-      redirect_to @order, notice: "Order was successfully created."
+      session.delete(:cart_id)
+      current_user.cart.cart_products.destroy_all
+      flash[:success] = "Order was successfully created."
+      redirect_to @order
     else
       render :new
     end
@@ -20,13 +30,20 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    @products = @order.products
+  end
+
+  def destroy
+    @order = Order.find(params[:id])
+    @order.destroy
+    flash[:success] = "Order was successfully canceled."
+    redirect_to orders_path
   end
 
   private
 
   def order_params
-    params.require(:order).permit(:status, :ordered_at, :user_id,
-      order_detail_attributes: [:first_name, :last_name, :email, address_attributes: [:country, :city, :street, :comment]])
+    params.require(:order).permit(:status, :ordered_at,
+      order_detail_attributes: [:first_name, :last_name, :phone_number, address_attributes: [:country, :city, :street, :comment]])
   end
-
 end

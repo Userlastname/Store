@@ -8,6 +8,7 @@
               Order Details
             </span>
           </h2>
+
           <%= form.fields_for :order_detail do |order_detail_form| %>
             <div class="form-floating">
               <%= order_detail_form.text_field :first_name, class: "form-control" %>
@@ -20,27 +21,31 @@
             </div>
 
             <div class="form-floating">
-              <%= order_detail_form.text_field :email, class: "form-control" %>
-              <%= order_detail_form.label :email, "Email", class: "form-control-placeholder" %>
+              <%= order_detail_form.text_field :phone_number, class: "form-control" %>
+              <%= order_detail_form.label :phone_number, "Phone number", class: "form-control-placeholder" %>
             </div>
-          <% end %>
-          <%= form.fields_for :address_attributes do |address_form| %>
-            <div class="form-floating">
-              <%= address_form.text_field :country, class: "form-control" %>
-              <%= address_form.label :country, "Country", class: "form-control-placeholder" %>
-            </div>
-            <div class="form-floating">
-              <%= address_form.text_field :city, class: "form-control" %>
-              <%= address_form.label :city, "Email", class: "form-control-placeholder" %>
-            </div>
-            <div class="form-floating">
-              <%= address_form.text_field :street, class: "form-control" %>
-              <%= address_form.label :street, "Street", class: "form-control-placeholder" %>
-            </div>
-            <div class="form-floating">
-              <%= address_form.text_area :comment, class: "form-control" %>
-              <%= address_form.label :comment, "Comment", class: "form-control-placeholder" %>
-            </div>
+
+            <%= order_detail_form.fields_for :address do |address_form| %>
+              <div class="form-floating">
+                <%= address_form.text_field :country, class: "form-control" %>
+                <%= address_form.label :country, "Country", class: "form-control-placeholder" %>
+              </div>
+
+              <div class="form-floating">
+                <%= address_form.text_field :city, class: "form-control" %>
+                <%= address_form.label :city, "City", class: "form-control-placeholder" %>
+              </div>
+
+              <div class="form-floating">
+                <%= address_form.text_field :street, class: "form-control" %>
+                <%= address_form.label :street, "Street", class: "form-control-placeholder" %>
+              </div>
+
+              <div class="form-floating">
+                <%= address_form.text_area :comment, class: "form-control" %>
+                <%= address_form.label :comment, "Comment", class: "form-control-placeholder" %>
+              </div>
+            <% end %>
           <% end %>
           <div class="form-floating tc">
             <%= form.submit "Create", class: "btn btn-primary" %>
