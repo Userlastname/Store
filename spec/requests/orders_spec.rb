@@ -1,7 +1,16 @@
 require 'rails_helper'
 
 RSpec.describe "Orders", type: :request do
-  describe "GET /index" do
-    pending "add some examples (or delete) #{__FILE__}"
+  include Devise::Test::IntegrationHelpers
+
+  before do
+    user = FactoryBot.create(:user)
+    sign_in user
+  end
+
+  describe "Post /orders" do
+    it "makes an order" do
+
+    end
   end
 end

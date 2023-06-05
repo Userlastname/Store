@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Order, type: :model do
   describe "associations" do
-    it { is_expected.to belong_to(:user).optional(true)}
+    it { is_expected.to belong_to(:user).optional(true) }
 
     it { is_expected.to have_one(:order_detail).dependent(:destroy) }
 
@@ -14,5 +14,4 @@ RSpec.describe Order, type: :model do
 
     it { is_expected.to accept_nested_attributes_for(:order_detail) }
   end
-
 end
