@@ -16,10 +16,6 @@
       <li class="list-group-item bg-text tw">City: <%= @order.order_detail.address.city %></li>
       <li class="list-group-item bg-text tw">Street: <%= @order.order_detail.address.street %></li>
       <li class="list-group-item bg-text tw">Comment: <%= @order.order_detail.address.comment %></li>
-      <li class="list-group-item bg-text tw">Product:</li>
-      <% @products.each do |product| %>
-        <li class="list-group-item bg-text tw"><%= product.name %> - <%= product.price %> ₴</li>
-      <% end %>
     </ul>
     <div class="card-body">
       <div class="card-body">
