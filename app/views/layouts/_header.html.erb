@@ -15,7 +15,7 @@
             <div class="dropdown ">
               <a class="nav-link text-white" style="font-size: 1.20rem;" href="#" id="categoriesDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</a>
               <div class="dropdown-menu " style="background-color: var(--bs-warning)" aria-labelledby="categoriesDropdown">
-                <% @categories.each do |category| %>
+                <% @categories_header.each do |category| %>
                   <%= link_to category.name, category_path(category), class: "dropdown-item" %>
                 <% end %>
               </div>

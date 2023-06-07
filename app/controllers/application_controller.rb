@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   private
 
   def set_categories
-    @categories = Category.all
+    @categories_header = Category.all
   end
 
   protected
